@@ -20,7 +20,7 @@ API → Extract → Transform → Load → SQLite
 - Requests
 - SQLite
 
-## ▶️ Como rodar
+## Como rodar
 
 ```bash
 pip install -r requirements.txt
