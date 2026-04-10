@@ -1,16 +1,23 @@
 import requests
 import logging
-from src.config import API_URL, CITIES
+import json
+from src.config import API_URL
 
 logging.basicConfig(level=logging.INFO)
 
+def load_cities(file_path="data/cities.json"):
+    with open(file_path, "r", encoding="utf-8") as file:
+        return json.load(file)
+
 def extract():
     all_data = []
+    cities = load_cities()
 
-    for city in CITIES:
+    for city in cities:
         try:
-            name, coords = city.split(":")
-            lat, lon = map(float, coords.split(","))
+            name = city["name"]
+            lat = city["lat"]
+            lon = city["lon"]
 
             logging.info(f"Fetching data for {name}")
 
@@ -29,7 +36,7 @@ def extract():
             all_data.append(data)
 
         except Exception as e:
-            logging.error(f"Error for {city}: {e}")
+            logging.error(f"Error fetching data for {city['name']}: {e}")
 
     logging.info("All data fetched successfully")
     return all_data

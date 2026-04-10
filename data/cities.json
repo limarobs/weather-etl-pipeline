@@ -1,0 +1,12 @@
+[
+  { "name": "Santiago", "lat": -29.19, "lon": -54.87 },
+  { "name": "Porto Alegre", "lat": -30.03, "lon": -51.23 },
+  { "name": "Santa Maria", "lat": -29.68, "lon": -53.81 },
+  { "name": "Passo Fundo", "lat": -28.26, "lon": -52.41 },
+  { "name": "Torres", "lat": -29.33, "lon": -49.73 },
+  { "name": "Uruguaiana", "lat": -29.76, "lon": -57.08 },
+  { "name": "Bage", "lat": -31.33, "lon": -54.10 },
+  { "name": "Caxias do Sul", "lat": -29.16, "lon": -51.18 },
+  { "name": "Cruz Alta", "lat": -28.65, "lon": -53.61 },
+  { "name": "Novo Hamburgo", "lat": -29.68, "lon": -51.13 }
+]
