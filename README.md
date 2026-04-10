@@ -44,7 +44,7 @@ The project follows a simple and modular ETL architecture:
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/your-repository.git
+git clone https://github.com/limarobs/weather-etl-pipeline
 cd your-repository
 ```
 
