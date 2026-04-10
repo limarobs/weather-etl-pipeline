@@ -24,9 +24,13 @@ API → Extract → Transform → Load → SQLite
 
 The project follows a simple and modular ETL architecture:
 
-* **Extract:** HTTP requests to the API
+* **Extract:** HTTP requests to the API using coordinates from a JSON file
 * **Transform:** Data processing using Pandas
 * **Load:** Data insertion into SQLite database
+
+## City Configuration
+
+* Cities are stored in a JSON file instead of environment variables for better scalability and maintainability.
 
 ## Technologies
 
@@ -50,11 +54,12 @@ cd your-repository
 pip install -r requirements.txt
 ```
 
-### 3. Set environment variables
+## 3. Environment Variables
 
-```bash
-API_KEY=your_api_key_here
-BASE_URL=https://api.openweathermap.org/data/2.5
+Create a `.env` file:
+
+```env
+API_URL=https://api.open-meteo.com/v1/forecast
 ```
 ### 4. Run the pipeline
 
