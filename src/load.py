@@ -1,13 +1,19 @@
-from db import get_engine
+import sqlite3
+import logging
 
 def load(df):
-    print("Loading data into the database")
+    if df is None:
+        logging.warning("No data to load")
+        return
 
-    engine = get_engine()
+    try:
+        conn = sqlite3.connect("data/weather.db")
 
-    df.to_sql(
-        "weather_data",
-        engine,
-        if_exists="append",
-        index=False
-    )
+        df.to_sql("weather", conn, if_exists="append", index=False)
+        df.to_csv("data/weather.csv", mode="a", index=False, header=False)
+
+        conn.close()
+        logging.info("Data loaded into SQLite")
+
+    except Exception as e:
+        logging.error(f"Error during load: {e}")

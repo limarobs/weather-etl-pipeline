@@ -1,22 +1,29 @@
 import pandas as pd
-from datetime import datetime
+import logging
 
-def transform(data):
-    print("Data transformation in progress")
+def transform(data_list):
+    if not data_list:
+        logging.warning("No data to transform")
+        return None
 
-    weather = data["current_weather"]
+    try:
+        rows = []
 
-    df = pd.DataFrame([weather])
+        for data in data_list:
+            current = data["current_weather"]
 
-    df = df.rename(columns={
-        "temperature": "temp_c",
-        "windspeed": "wind_kmh"
-    })
+            rows.append({
+                "city": data["city"],
+                "temperature": current["temperature"],
+                "windspeed": current["windspeed"],
+                "time": current["time"]
+            })
 
-    df["temp_category"] = df["temp_c"].apply(
-        lambda x: "HOT" if x > 30 else "COLD" if x < 15 else "MILD"
-    )
+        df = pd.DataFrame(rows)
 
-    df["collected_at"] = datetime.now()
+        logging.info("Data transformed successfully")
+        return df
 
-    return df
+    except Exception as e:
+        logging.error(f"Error during transformation: {e}")
+        return None

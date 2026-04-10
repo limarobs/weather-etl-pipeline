@@ -1,18 +1,35 @@
 import requests
+import logging
+from src.config import API_URL, CITIES
+
+logging.basicConfig(level=logging.INFO)
 
 def extract():
-    print("Extracting data from API")
+    all_data = []
 
-    url = "https://api.open-meteo.com/v1/forecast"
-    params = {
-        "latitude": -29.19,
-        "longitude": -54.87,
-        "current_weather": True
-    }
+    for city in CITIES:
+        try:
+            name, coords = city.split(":")
+            lat, lon = map(float, coords.split(","))
 
-    response = requests.get(url, params=params)
+            logging.info(f"Fetching data for {name}")
 
-    if response.status_code != 200:
-        raise Exception("API request failed with status code {}".format(response.status_code))
+            params = {
+                "latitude": lat,
+                "longitude": lon,
+                "current_weather": True
+            }
 
-    return response.json()
+            response = requests.get(API_URL, params=params)
+            response.raise_for_status()
+
+            data = response.json()
+            data["city"] = name
+
+            all_data.append(data)
+
+        except Exception as e:
+            logging.error(f"Error for {city}: {e}")
+
+    logging.info("All data fetched successfully")
+    return all_data

@@ -1,12 +1,18 @@
-from extract import extract
-from transform import transform
-from load import load
+from src.extract import extract
+from src.transform import transform
+from src.load import load
+import logging
 
-def run_pipeline():
+logging.basicConfig(level=logging.INFO)
+
+def main():
+    logging.info("Starting ETL pipeline")
+
     data = extract()
     df = transform(data)
     load(df)
-    print("ETL pipeline executed successfully")
+
+    logging.info("ETL pipeline finished")
 
 if __name__ == "__main__":
-    run_pipeline()
+    main()
