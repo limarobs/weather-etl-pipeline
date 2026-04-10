@@ -12,6 +12,7 @@ Pipeline flow:
 API → Extract → Transform → Load → SQLite
 ```
 
+
 ## Features
 
 * Data extraction from a weather API (Open-Meteo)
@@ -23,9 +24,9 @@ API → Extract → Transform → Load → SQLite
 
 The project follows a simple and modular ETL architecture:
 
-* Extract: HTTP requests to the API
-* Transform: Data processing using Pandas
-* Load: Data insertion into SQLite
+* **Extract:** HTTP requests to the API
+* **Transform:** Data processing using Pandas
+* **Load:** Data insertion into SQLite database
 
 ## Technologies
 
@@ -49,7 +50,13 @@ cd your-repository
 pip install -r requirements.txt
 ```
 
-### 3. Run the pipeline
+### 3. Set environment variables
+
+```bash
+API_KEY=your_api_key_here
+BASE_URL=https://api.openweathermap.org/data/2.5
+```
+### 4. Run the pipeline
 
 ```bash
 python -m src.main
