@@ -81,14 +81,14 @@ streamlit run dashboard.py
 
 The project includes an interactive dashboard built with Streamlit.
 
-# Features
+### Features
 
 - Multi-city comparison
 - Temperature and wind speed trends
 - Real-time data visualization
 - City ranking based on latest data
 
-# Preview
+### Preview
 
 ![Dashboard 1](assets/dashboard1.png)
 ![Dashboard 2](assets/dashboard2.png)
