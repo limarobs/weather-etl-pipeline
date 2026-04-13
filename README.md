@@ -4,21 +4,24 @@ A Data Engineering project that implements an ETL (Extract, Transform, Load) pip
 
 ## Overview
 
-This project consumes data from a public weather API, processes and cleans the data, and stores the results in a local database, enabling the creation of historical datasets over time.
+This project consumes data from a public weather API, processes and structures the data, stores it in a local database, and provides an interactive dashboard for analysis.
 
 Pipeline flow:
 
 ```
-API → Extract → Transform → Load → SQLite
+API → Extract → Transform → Load → SQLite → Dashboard
 ```
 
 
 ## Features
 
-* Data extraction from a weather API (Open-Meteo)
-* Data cleaning, transformation, and structuring
-* Data storage in a SQLite database
-* Historical data persistence for future analysis
+- Multi-city weather data extraction
+- Data transformation and structuring using Pandas
+- Storage in SQLite database
+- Historical data tracking over time
+- Interactive dashboard built with Streamlit
+- City comparison (temperature and wind speed)
+- Ranking of cities by temperature
 
 ## Architecture
 
@@ -27,6 +30,7 @@ The project follows a simple and modular ETL architecture:
 * **Extract:** HTTP requests to the API using coordinates from a JSON file
 * **Transform:** Data processing using Pandas
 * **Load:** Data insertion into SQLite database
+* **Visualization:** Streamlit dashboard for analysis
 
 ## City Configuration
 
@@ -38,6 +42,7 @@ The project follows a simple and modular ETL architecture:
 * Pandas
 * Requests
 * SQLite
+* Streamlit
 
 ## How to Run
 
@@ -66,3 +71,26 @@ API_URL=https://api.open-meteo.com/v1/forecast
 ```bash
 python -m src.main
 ```
+### 5. Run the dashboard
+
+```bash
+streamlit run dashboard.py
+```
+
+## Dashboard
+
+The project includes an interactive dashboard built with Streamlit.
+
+# Features
+
+- Multi-city comparison
+- Temperature and wind speed trends
+- Real-time data visualization
+- City ranking based on latest data
+
+# Preview
+
+![Dashboard 1](assets/dashboard1.png)
+![Dashboard 2](assets/dashboard2.png)
+
+
